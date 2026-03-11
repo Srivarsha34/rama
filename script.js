@@ -243,7 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!reviewsTrack || reviewCards.length === 0) return;
     const card = reviewCards[0];
     const cardStyles = getComputedStyle(card);
-    const cardWidth = card.offsetWidth + parseInt(cardStyles.marginRight || 0) + 24; // 24 = gap
+    const trackStyles = getComputedStyle(reviewsTrack);
+    const gap = parseInt(trackStyles.gap) || 24;
+    const cardWidth = card.offsetWidth + parseInt(cardStyles.marginRight || 0) + gap;
     reviewsTrack.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
 
     // Update dots
